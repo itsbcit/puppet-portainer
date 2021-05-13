@@ -1,0 +1,18 @@
+[Unit]
+Description=Portainer CE
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+SyslogIdentifier=portainer
+#ExecStartPre=-/usr/bin/docker stop portainer
+#ExecStartPre=-/usr/bin/docker rm portainer
+ExecStart=/usr/bin/docker run --rm --name=portainer -p 443:9000 -p 8000:8000 -v /var/lib/portainer:/data -v /etc/pki:/etc/pki portainer/portainer-ce --ssl --sslcert=/etc/pki/tls/certs/digicert-docker.tis.crt --sslkey=/etc/pki/tls/private/digicert-docker.tis.key
+
+[Install]
+WantedBy=multi-user.target
