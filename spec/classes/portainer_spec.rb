@@ -12,9 +12,11 @@ describe 'portainer' do
 
   context "with default parameters" do
       it { is_expected.to contain_file('portainer.service').with({
-          'path' => '/etc/systemd/system/portainer.service'}) }
+          'path' => '/etc/systemd/system/portainer.service'})
+      }
       it { is_expected.to contain_file('portainer.service')
-          .with_content(/^Description=Portainer CE$/) }
+          .with_content(/^Description=Portainer CE$/)
+      }
       it {
         is_expected.to contain_file('data_path').with({
           'ensure' => 'directory',
