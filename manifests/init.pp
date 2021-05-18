@@ -14,7 +14,7 @@ class portainer(
     owner   => root,
     group   => root,
     mode    => '0444',
-    content => file('portainer/portainer.service'),
+    content => template('portainer/portainer.service.erb'),
     notify  => [
       Exec['daemon-reload'],
       Service['portainer'],
