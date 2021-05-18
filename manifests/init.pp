@@ -10,12 +10,12 @@ class portainer(
   String $pki_mount_path,
 ) {
   file { 'portainer.service':
-    path   => "${portainer::systemd_unit_path}/portainer.service",
-    owner  => root,
-    group  => root,
-    mode   => '0644',
-    source => 'puppet:///modules/portainer/service.conf',
-    notify => [
+    path    => "${portainer::systemd_unit_path}/portainer.service",
+    owner   => root,
+    group   => root,
+    mode    => '0444',
+    content => file('portainer/portainer.service'),
+    notify  => [
       Exec['daemon-reload'],
       Service['portainer'],
     ],
