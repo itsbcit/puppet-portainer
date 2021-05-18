@@ -33,7 +33,8 @@ describe 'portainer' do
     }}
     it { is_expected.to compile }
     it { is_expected.to contain_file('portainer.service').with({
-        'path' => '/foo/bar/system/portainer.service'}) }
+        'path' => '/foo/bar/system/portainer.service'})
+    }
     it {
       is_expected.to contain_file('data_path').with({
         'ensure' => 'directory',
