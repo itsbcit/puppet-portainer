@@ -8,7 +8,8 @@ class portainer::edge_agent(
   String $systemd_unit_path,
   String $systemd_unit_env_file,
 ) {
-  file { 'systemd_unit_file':
+
+  file { 'portainer-edge-agent.service':
     ensure  => file,
     path    => "${systemd_unit_path}/portainer-edge-agent.service",
     owner   => root,
