@@ -12,7 +12,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"puppet.puppet-vscode",
-		"rebornix.Ruby"
+		"rebornix.Ruby",
+		"wwm.better-align"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
