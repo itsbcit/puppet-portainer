@@ -16,7 +16,16 @@ class portainer::edge_agent(
     group   => root,
     mode    => '0444',
     content => template('portainer/portainer-edge-agent.service.erb'),
-    notify  => Service['portainer-edge-agent'],
+    notify  => [
+      Service['portainer-edge-agent'],
+      Exec['edge-agent-daemon-reload'],
+    ],
+  }
+
+  exec { 'edge-agent-daemon-reload':
+    command     => 'systemctl daemon-reload',
+    path        => '/bin:/sbin:/usr/bin:/usr/sbin',
+    refreshonly => true,
   }
 
   service { 'portainer-edge-agent':
