@@ -10,4 +10,12 @@ describe 'portainer::edge_agent' do
       it { is_expected.to compile }
     end
   end
+
+  context "with default parameters" do
+    it { is_expected.to contain_file('portainer-edge-agent.service')
+      .with({'path' => '/etc/systemd/system/portainer-edge-agent.service'})
+      .with_content(/^Description=Portainer CE Edge Agent$/)
+      .with_content(/^EnvironmentFile=\/etc\/sysconfig\/portainer-edge-agent/)
+    }
+  end
 end
