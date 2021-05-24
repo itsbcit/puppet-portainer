@@ -1,6 +1,6 @@
-# @summary A short summary of the purpose of this class
+# @summary Portainer Edge Agent
 #
-# A description of what this class does
+# Installs and configures the Portainer Edge Agent
 #
 # @example
 #   include portainer::edge_agent
