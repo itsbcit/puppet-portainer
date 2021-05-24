@@ -16,5 +16,13 @@ class portainer::edge_agent(
     group   => root,
     mode    => '0444',
     content => template('portainer/portainer-edge-agent.service.erb'),
+    notify  => Service['portainer-edge-agent'],
+  }
+
+  service { 'portainer-edge-agent':
+    ensure   => 'running',
+    enable   => true,
+    provider => systemd,
+    require  => File['portainer-edge-agent.service'],
   }
 }
