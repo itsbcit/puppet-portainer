@@ -11,7 +11,7 @@ class portainer::edge_agent(
 
   file { 'portainer-edge-agent.service':
     ensure  => file,
-    path    => "${systemd_unit_path}/portainer-edge-agent.service",
+    path    => "${portainer::edge_agent::systemd_unit_path}/portainer-edge-agent.service",
     owner   => root,
     group   => root,
     mode    => '0444',
