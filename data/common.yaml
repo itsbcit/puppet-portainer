@@ -1,4 +1,9 @@
 ---
-portainer::systemd_unit_path: '/etc/systemd/system'
-portainer::data_path: '/var/lib/portainer'
-portainer::pki_mount_path: '/etc/letsencrypt'
+portainer:
+  systemd_unit_path: '/etc/systemd/system'
+  data_path: '/var/lib/portainer'
+  pki_mount_path: '/etc/letsencrypt'
+
+portainer::edge_agent:
+  systemd_unit_path: '/etc/systemd/system'
+  systemd_unit_env_file: '/etc/sysconfig/portainer-edge-agent'
