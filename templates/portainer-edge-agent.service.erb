@@ -10,8 +10,8 @@ StartLimitBurst=5
 TimeoutStartSec=0
 RestartSec=5
 SyslogIdentifier=portainer-agent
-EnvironmentFile=/etc/sysconfig/portainer-agent
-ConditionPathExists=/etc/sysconfig/portainer-agent
+EnvironmentFile=<%= @systemd_unit_env_file %>
+ConditionPathExists=<%= @systemd_unit_env_file %>
 ExecStart=/usr/bin/docker run \
     --name=portainer-edge-agent \
     --rm \
