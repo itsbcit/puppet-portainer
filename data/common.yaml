@@ -5,3 +5,6 @@ portainer::pki_mount_path: '/etc/letsencrypt'
 
 portainer::edge_agent::systemd_unit_path: '/etc/systemd/system'
 portainer::edge_agent::systemd_unit_env_file: '/etc/sysconfig/portainer-edge-agent'
+portainer::edge_agent::data_path: '/var/lib/portainer-edge-agent'
+portainer::edge_agent::edge_id: ''
+portainer::edge_agent::edge_key: ''
