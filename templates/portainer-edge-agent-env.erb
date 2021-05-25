@@ -1,8 +1,12 @@
 # This file is managed by Puppet and local changes
 # may be overwritten
-<% if @edge_id.empty? or @edge_key.empty? %>
-# Set portainer::edge_agent::edge_id and portainer::edge_agent::edge_key in the host Hiera
-# KEY_OPTIONS="-e EDGE_ID=... -e EDGE_KEY=..."
-<% else -%>
-KEY_OPTIONS="-e EDGE_ID=<%= @edge_id %> -e EDGE_KEY=<%= @edge_key %>"
+<% if @edge_id.empty? or @edge_key.empty? -%>
+
+# Set portainer::edge_agent::edge_id in Hiera
 <% end -%>
+<% if @edge_id.empty? or @edge_key.empty? -%>
+
+# Set portainer::edge_agent::edge_key in the host Hiera
+<% end -%>
+
+KEY_OPTIONS="<%= @edge_id.empty? ? '' : " -e EDGE_ID="+@edge_id %><%= @edge_key.empty? ? '' : " -e EDGE_KEY="+@edge_key %>"
