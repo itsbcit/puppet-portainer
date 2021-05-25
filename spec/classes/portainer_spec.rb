@@ -11,11 +11,13 @@ describe 'portainer' do
   end
 
   context "with default parameters" do
-      it { is_expected.to contain_file('portainer.service').with({
-          'path' => '/etc/systemd/system/portainer.service'})
-      }
       it { is_expected.to contain_file('portainer.service')
-          .with_content(/^Description=Portainer CE$/)
+        .with({'path' => '/etc/systemd/system/portainer.service'})
+        .with_content(/^Description=Portainer CE$/)
+        .with_content(/-v \/var\/lib\/portainer:\/data/)
+        .with_content(/-v \/etc\/letsencrypt:\/etc\/letsencrypt/)
+        .with_content(/sslcert=\/etc\/letsencrypt\/live\/portainer\.example\.com\/fullchain\.pem/)
+        .with_content(/sslkey=\/etc\/letsencrypt\/live\/portainer\.example\.com\/privkey\.pem/)
       }
       it {
         is_expected.to contain_file('data_path').with({
