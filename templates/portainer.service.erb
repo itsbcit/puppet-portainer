@@ -12,7 +12,12 @@ RestartSec=5
 SyslogIdentifier=portainer
 #ExecStartPre=-/usr/bin/docker stop portainer
 #ExecStartPre=-/usr/bin/docker rm portainer
-ExecStart=/usr/bin/docker run --rm --name=portainer -p 443:9000 -p 8000:8000 -v /var/lib/portainer:/data -v /etc/pki:/etc/pki portainer/portainer-ce --ssl --sslcert=/etc/pki/tls/certs/digicert-docker.tis.crt --sslkey=/etc/pki/tls/private/digicert-docker.tis.key
+ExecStart=/usr/bin/docker run --rm --name=portainer \
+    -p 443:9000 -p 8000:8000 \
+    -v <%= @data_path %>:/data \
+    -v <%= @pki_mount_path %>:<%= @pki_mount_path %> \
+    portainer/portainer-ce \
+    --ssl --sslcert=<%= @sslcert %> --sslkey=<%= @sslkey %>
 
 [Install]
 WantedBy=multi-user.target
