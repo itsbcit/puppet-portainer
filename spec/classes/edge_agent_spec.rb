@@ -20,12 +20,9 @@ describe 'portainer::edge_agent' do
 
     it { is_expected.to contain_file('portainer-edge-agent env')
       .with({'path' => '/etc/sysconfig/portainer-edge-agent'})
-      .with_content(/^EDGE=1$/)
-      .with_content(/^CAP_HOST_MANAGEMENT=1$/)
       .with_content(/^# .*portainer::edge_agent::edge_id.*/)
-      .with_content(/^# EDGE_ID=$/)
       .with_content(/^# .*portainer::edge_agent::edge_key.*/)
-      .with_content(/^# EDGE_KEY=$/)
+      .with_content(/^# KEY_OPTIONS="-e EDGE_ID=\.\.\. -e EDGE_KEY=\.\.\."$/)
     }
 
     it { is_expected.to contain_file('portainer-edge-agent-data')
@@ -54,8 +51,7 @@ describe 'portainer::edge_agent' do
     }
     it { is_expected.to contain_file('portainer-edge-agent env')
       .with({'path' => '/qux/corge/edge-agent.env'})
-      .with_content(/^EDGE_ID=bazquxcorge$/)
-      .with_content(/^EDGE_KEY=foo-bar-baz$/)
+      .with_content(/^KEY_OPTIONS="-e EDGE_ID=bazquxcorge -e EDGE_KEY=foo-bar-baz"$/)
     }
     it { is_expected.to contain_file('portainer-edge-agent-data')
       .with({'path' => '/someother/place'})
