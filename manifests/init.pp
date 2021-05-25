@@ -26,7 +26,7 @@ class portainer(
     path   => $portainer::data_path,
     owner  => root,
     group  => root,
-    mode   => '0700',
+    mode   => '0750',
   }
 
   exec { 'daemon-reload':
