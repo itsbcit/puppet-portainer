@@ -5,7 +5,7 @@ portainer::pki_mount_path: '/etc/letsencrypt'
 portainer::sslkey: '/etc/letsencrypt/live/portainer.example.com/privkey.pem'
 portainer::sslcert: '/etc/letsencrypt/live/portainer.example.com/fullchain.pem'
 portainer::image_registry: docker.io
-portainer::image_spec: portainer/portainer-ce:latest
+portainer::image_spec: 'portainer/portainer-ce:latest'
 
 portainer::edge_agent::systemd_unit_path: '/etc/systemd/system'
 portainer::edge_agent::systemd_unit_env_file: '/etc/sysconfig/portainer-edge-agent'
@@ -13,4 +13,4 @@ portainer::edge_agent::data_path: '/var/lib/portainer-edge-agent'
 portainer::edge_agent::edge_id: ''
 portainer::edge_agent::edge_key: ''
 portainer::edge_agent::image_registry: docker.io
-portainer::edge_agent::image_spec: portainer/agent:latest
+portainer::edge_agent::image_spec: 'portainer/agent:latest'
