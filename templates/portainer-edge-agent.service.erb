@@ -21,7 +21,7 @@ ExecStart=/usr/bin/docker run \
     -e EDGE=1 \
     -e CAP_HOST_MANAGEMENT=1 \
     $KEY_OPTIONS \
-    <%= @image_registry %>/<%= $image_spec %>
+    <%= @image_registry %>/<%= @image_spec %>
 
 [Install]
 WantedBy=multi-user.target
