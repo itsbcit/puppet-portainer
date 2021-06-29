@@ -10,6 +10,8 @@ class portainer::edge_agent(
   String $data_path,
   String $edge_id,
   String $edge_key,
+  String $image_registry,
+  String $image_spec,
 ) {
 
   file { 'portainer-edge-agent.service':

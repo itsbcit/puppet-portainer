@@ -10,6 +10,8 @@ class portainer(
   String $pki_mount_path,
   String $sslcert,
   String $sslkey,
+  String $image_registry,
+  String $image_spec,
 ) {
   file { 'portainer.service':
     path    => "${portainer::systemd_unit_path}/portainer.service",
